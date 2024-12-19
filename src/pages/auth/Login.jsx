@@ -63,31 +63,31 @@ function Login() {
 
 
     return (
-        <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light">
+        <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light login-and-all-form">
             <Row className="w-100">
-                <Col md={4} className="mx-auto">
-                    <div className="bg-white p-4 rounded shadow">
+                <Col md={5} className="mx-auto">
+                    <div className="bg-white p-5 login-form">
                         {/* Toggle Login/Signup */}
-                        <div className="d-flex justify-content-center  mb-3">
+                        <div className="d-flex justify-content-center  mb-4">
                             <Button
                                 variant="dark"
-                                className="rounded-start px-4"
+                                className="rounded-start login-signup-btn"
                                 onClick={() => navigate("/login")}
                             >
                                 Login
                             </Button>
                             <Button
                                 variant="outline-dark"
-                                className="rounded-end px-4 mx-2"
+                                className="rounded-end mx-2 login-signup-btn"
                                 onClick={() => navigate("/signup")}
                             >
                                 Sign Up
                             </Button>
                         </div>
 
-                        <div className="text-center mb-4">
-                            <h2 className="text-primary">Welcome To</h2>
-                            <h3 className="text-black">TRUSTED NETWORK PARTNER</h3>
+                        <div className="text-center login-heading mb-4">
+                            <h2 className="welcome-heading">Welcome To</h2>
+                            <h3 className="tag-heading">Trusted Network Partner</h3>
                             <p>Sign in to continue with your account</p>
                         </div>
                         {error && <div className="alert alert-danger">{error}</div>}
