@@ -1,11 +1,39 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Nunito Sans", serif;
-    width: 100vw;
-    height: 100vh;
+ 
 }
+.login-and-all-form {
+    background-image: url(../images/auth/login-bg-img.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+.login-signup-btn {
+    padding: 7px 40px;
+    border-radius: 10px !important;
+    font-weight: 600;
+}
+.welcome-heading{color: #000; font-weight: 700;}
+.tag-heading {
+    font-family: "Merriweather", serif;
+    font-size: 35px;
+    color: #034a68;
+}
+.login-heading p {
+    color: #000;
+    font-weight: 600;
+}
+.login-and-all-form .form-label{font-weight: 600;}
+.login-and-all-form input{
+    border-radius: 0 !important;
+    padding: 12px 15px;
+    border: 1px solid #c5c5c5;
+}
+.login-form{border-radius: 20px; box-shadow: 5px ;}
