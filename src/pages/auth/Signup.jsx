@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Signup() {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -18,14 +17,14 @@ function Signup() {
                         {/* Toggle Login/Signup */}
                         <div className="d-flex justify-content-center  mb-3">
                             <Button
-                                variant="outline-warning"
+                                variant="outline-dark"
                                 className="rounded-start px-4"
                                 onClick={() => navigate("/login")}
                             >
                                 Login
                             </Button>
                             <Button
-                                variant="warning"
+                                variant="dark"
                                 className="rounded-end px-4 mx-2"
                                 onClick={() => navigate("/signup")}
                             >
@@ -81,7 +80,7 @@ function Signup() {
                             <div className="d-grid">
                                 <Button
                                     type="submit"
-                                    variant="warning"
+                                    variant="dark"
                                     className="rounded-pill fw-bold"
                                 >
                                     SIGN UP
@@ -94,7 +93,7 @@ function Signup() {
                             <p>
                                 Already have an account?{" "}
                                 <span
-                                    className="text-warning cursor-pointer"
+                                    className="text-primary cursor-pointer"
                                     onClick={() => navigate("/login")}
                                     style={{ cursor: "pointer" }}
                                 >

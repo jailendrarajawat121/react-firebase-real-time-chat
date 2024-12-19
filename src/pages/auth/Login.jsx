@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 function Login() {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -20,14 +19,14 @@ function Login() {
                         {/* Toggle Login/Signup */}
                         <div className="d-flex justify-content-center  mb-3">
                             <Button
-                                variant="warning"
+                                variant="dark"
                                 className="rounded-start px-4"
                                 onClick={() => navigate("/login")}
                             >
                                 Login
                             </Button>
                             <Button
-                                variant="outline-warning"
+                                variant="outline-dark"
                                 className="rounded-end px-4 mx-2"
                                 onClick={() => navigate("/signup")}
                             >
@@ -71,7 +70,7 @@ function Login() {
 
 
                             <div className="text-end mb-3">
-                                <a href="/forgot-password" className="text-warning">
+                                <a href="/forgot-password" className="text-primary">
                                     Forgot Password?
                                 </a>
                             </div>
@@ -80,7 +79,7 @@ function Login() {
                             <div className="d-grid">
                                 <Button
                                     type="submit"
-                                    variant="warning"
+                                    variant="dark"
                                     className="rounded-pill fw-bold"
                                 >
                                     LOGIN
@@ -93,7 +92,7 @@ function Login() {
                             <p>
                                 Don't have an account?{" "}
                                 <span
-                                    className="text-warning cursor-pointer"
+                                    className="text-primary cursor-pointer"
                                     onClick={() => navigate("/signup")}
                                     style={{ cursor: "pointer" }}
                                 >

@@ -30,7 +30,7 @@ function ForgetPassword() {
                             <div className="d-grid">
                                 <Button
                                     type="submit"
-                                    variant="warning"
+                                    variant="dark"
                                     className="rounded-pill fw-bold"
                                 >
                                     Continue
