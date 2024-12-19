@@ -36,7 +36,7 @@ function Signup() {
                         <div className="text-center mb-4">
                             <h2 className="text-primary">Welcome To</h2>
                             <h3 className="text-black">TRUSTED NETWORK PARTNER</h3>
-                            <p>{isLogin ? "Sign in to continue with your account" : "Create a new account to get started"}</p>
+                            <p>Create a new account to get started</p>
                         </div>
 
                         <Form>

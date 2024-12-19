@@ -12,18 +12,6 @@ function Login() {
         setShowPassword((prevState) => !prevState);
     };
 
-    const handleSwitch = () => {
-        setIsLogin((prev) => !prev); // Toggle between Login and Sign Up
-    };
-
-    const handleLoginRedirect = () => {
-        navigate("/login"); // Navigate to the login page
-    };
-
-    const handleSignupRedirect = () => {
-        navigate("/signup"); // Navigate to the signup page
-    };
-
     return (
         <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light">
             <Row className="w-100">
