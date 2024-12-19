@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import ForgetPassword from "./pages/auth/ForgetPassword";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css';
+
 function App() {
   return (
     <Router>
