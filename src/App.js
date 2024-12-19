@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from "./pages/home/Home";
 import ForgetPassword from "./pages/auth/ForgetPassword";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/css/style.css';
 function App() {
   return (
     <Router>
