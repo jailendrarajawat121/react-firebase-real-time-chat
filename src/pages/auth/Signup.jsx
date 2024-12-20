@@ -4,8 +4,10 @@ import { FcGoogle } from "react-icons/fc";
 import { SiApple } from "react-icons/si";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase"; // Adjust the import to your firebase setup
+import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { getDatabase, ref, set } from "firebase/database";
+import { database } from '../../firebase'; // Ensure you import the database
 
 const Signup = () => {
     const [email, setEmail] = useState("");
@@ -14,10 +16,15 @@ const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isAgreed, setIsAgreed] = useState(false);
-    const [error, setError] = useState(""); // State for error message
+    const [error, setError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [phoneNumberError, setPhoneNumberError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
@@ -37,6 +44,7 @@ const Signup = () => {
         setEmailError("");
         setPasswordError("");
         setConfirmPasswordError("");
+        setPhoneNumberError("");
 
         if (!email) {
             setEmailError("Email is required.");
@@ -61,21 +69,46 @@ const Signup = () => {
             isValid = false;
         }
 
+        if (!phoneNumber) {
+            setPhoneNumberError("Phone number is required.");
+            isValid = false;
+        } else if (!/^\d{10}$/.test(phoneNumber)) {
+            setPhoneNumberError("Enter a valid phone number (10 digits).");
+            isValid = false;
+        }
+
         return isValid;
     };
 
     const handleSubmit = async (e) => {
+        debugger
         e.preventDefault();
-        setError(""); // Clear any previous error message
-
+        setError("");
+        setSuccessMessage("");
         if (!validateInputs()) {
             return;
         }
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            console.log("User signed up successfully");
-            alert("User signed up successfully");
-            navigate("/login");
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            const db = getDatabase();
+            await set(ref(db, 'users/' + user.uid), {
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                phoneNumber: phoneNumber
+            });
+            await set(ref(database, 'users/' + user.uid), {
+                uid: user.uid,
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                phoneNumber: phoneNumber
+            });
+            setSuccessMessage("User signed up successfully!");
+            setTimeout(() => {
+                navigate("/login");
+            }, 2000);
         } catch (error) {
             console.error("Error signing up:", error.message);
             setError(error.message);
@@ -96,6 +129,7 @@ const Signup = () => {
                     Transfer Network Partner
                 </h3>
                 {error && <div className="alert alert-danger">{error}</div>}
+                {successMessage && <div className="alert alert-success">{successMessage}</div>}
                 <Row className="mb-4">
                     <Col>
                         <Button
@@ -139,6 +173,8 @@ const Signup = () => {
                                         borderRadius: "5px",
                                         border: "1px solid #ced4da",
                                     }}
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                 />
                             </Form.Group>
                         </Col>
@@ -152,6 +188,8 @@ const Signup = () => {
                                         borderRadius: "5px",
                                         border: "1px solid #ced4da",
                                     }}
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
                                 />
                             </Form.Group>
                         </Col>
@@ -184,7 +222,10 @@ const Signup = () => {
                                         borderRadius: "5px",
                                         border: "1px solid #ced4da",
                                     }}
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
                                 />
+                                {phoneNumberError && <div className="text-danger mt-1">{phoneNumberError}</div>}
                             </Form.Group>
                         </Col>
                     </Row>
