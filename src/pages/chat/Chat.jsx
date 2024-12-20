@@ -10,26 +10,39 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [chatUserName, setChatUserName] = useState('');
+    const [userFirstName, setUserFirstName] = useState('');
 
     useEffect(() => {
         const userRef = ref(database, 'users/' + uid);
         onValue(userRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                setChatUserName(data.displayName || data.email);
+                setChatUserName(data.firstName || uid);
             }
         });
     }, [uid]);
 
     useEffect(() => {
+        if (user) {
+            const currentUserRef = ref(database, 'users/' + user.uid);
+            onValue(currentUserRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    setUserFirstName(data.firstName);
+                }
+            });
+        }
+    }, [user]);
+
+    useEffect(() => {
         const messagesRef = ref(database, 'messages');
         onValue(messagesRef, (snapshot) => {
-            const data = snapshot?.val();
-            const messagesArray = data ? Object?.values(data) : [];
+            const data = snapshot.val();
+            const messagesArray = data ? Object.values(data) : [];
             if (user) {
                 const filteredMessages = messagesArray.filter(msg =>
-                    (msg?.recipientId === uid && msg?.uid === user?.uid) ||
-                    (msg?.recipientId === user?.uid && msg?.uid === uid)
+                    (msg.recipientId === uid && msg?.uid === user?.uid) ||
+                    (msg.recipientId === user?.uid && msg?.uid === uid)
                 );
                 setMessages(filteredMessages);
             }
@@ -37,6 +50,7 @@ const Chat = () => {
     }, [uid, user]);
 
     const sendMessage = (e) => {
+        console.log('database', user)
         e.preventDefault();
         if (newMessage.trim() === '' || !user) return;
 
@@ -45,8 +59,10 @@ const Chat = () => {
             text: newMessage,
             uid: user?.uid,
             recipientId: uid,
-            displayName: user?.displayName || user?.email,
+            displayName: userFirstName || 'Anonymous',
             timestamp: Date.now(),
+        }).catch((error) => {
+            console.error("Error sending message:", error);
         });
         setNewMessage('');
     };
@@ -71,10 +87,10 @@ const Chat = () => {
             <h2>Chat with {chatUserName || uid}</h2>
             <div className="chat-window">
                 {messages.map((msg, index) => (
-                    <div key={index} className={msg?.uid === user?.uid ? 'my-message' : 'other-message'}>
-                        <strong>{msg?.displayName}: </strong>{msg?.text}
+                    <div key={index} className={msg.uid === user.uid ? 'my-message' : 'other-message'}>
+                        {msg.text}
                         <div className="text-muted" style={{ fontSize: '0.8em' }}>
-                            {formatTimestamp(msg?.timestamp)}
+                            {formatTimestamp(msg.timestamp)}
                         </div>
                     </div>
                 ))}

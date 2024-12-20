@@ -69,7 +69,7 @@ const Sidebar = () => {
                         >
                             <div className="d-flex align-items-center">
                                 <Image
-                                    src={u.photoURL || 'https://via.placeholder.com/40'}
+                                    src={u.photoURL || 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436178.jpg?t=st=1734692747~exp=1734696347~hmac=1600120b44676c1d001bf2b18e5fdec1fe58815c5a1c7b2b251573544205359f&w=740'}
                                     roundedCircle
                                     width={40}
                                     height={40}
