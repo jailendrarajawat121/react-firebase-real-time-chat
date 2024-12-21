@@ -13,14 +13,18 @@ import { auth } from './firebase';
 
 function App() {
   const [user] = useAuthState(auth);
+
+  const isAuthenticated = () => {
+    return localStorage.getItem("authToken") !== null;
+  };
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={user ? <MainLayout><Home /></MainLayout> : <Navigate to="/login" />} />
-          <Route path="/chat/:uid" element={user ? <MainLayout><Chat /></MainLayout> : <Navigate to="/login" />} />
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
+          <Route path="/" element={isAuthenticated() ? <MainLayout><Home /></MainLayout> : <Navigate to="/login" />} />
+          <Route path="/chat/:uid" element={isAuthenticated() ? <MainLayout><Chat /></MainLayout> : <Navigate to="/login" />} />
+          <Route path="/login" element={isAuthenticated() ? <Navigate to="/" /> : <Login />} />
+          <Route path="/signup" element={isAuthenticated() ? <Navigate to="/" /> : <Signup />} />
           <Route path="/forgot-password" element={<ForgetPassword />} />
         </Routes>
       </div>

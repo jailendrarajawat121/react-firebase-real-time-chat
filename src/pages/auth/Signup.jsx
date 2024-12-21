@@ -81,7 +81,6 @@ const Signup = () => {
     };
 
     const handleSubmit = async (e) => {
-        debugger
         e.preventDefault();
         setError("");
         setSuccessMessage("");

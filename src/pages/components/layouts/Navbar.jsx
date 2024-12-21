@@ -12,7 +12,9 @@ const NavbarComponent = () => {
     const handleLogout = async () => {
         try {
             await signOut(auth); // Sign out from Firebase
-            navigate("/login"); // Redirect to login page
+            localStorage.removeItem('authToken'); // Redirect to login page
+            window.location.reload();
+            navigate("/login");
         } catch (error) {
             console.error("Error signing out:", error);
         }
