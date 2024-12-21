@@ -64,6 +64,7 @@ const Login = () => {
             const token = await userCredential.user.getIdToken(); // Get the auth token
             localStorage.setItem("authToken", token); // Store token in local storage
             console.log("User logged in:", userCredential.user);
+            window.location.reload();
             navigate("/"); // Redirect to the dashboard or another page after successful login
         } catch (error) {
             console.error("Error logging in:", error.message);

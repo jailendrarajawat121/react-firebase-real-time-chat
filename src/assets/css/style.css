@@ -7,33 +7,110 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: "Nunito Sans", serif;
- 
+
 }
+
 .login-and-all-form {
     background-image: url(../images/auth/login-bg-img.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
 }
+
 .login-signup-btn {
     padding: 7px 40px;
     border-radius: 10px !important;
     font-weight: 600;
 }
-.welcome-heading{color: #000; font-weight: 700;}
+
+.welcome-heading {
+    color: #000;
+    font-weight: 700;
+}
+
 .tag-heading {
     font-family: "Merriweather", serif;
     font-size: 35px;
     color: #034a68;
 }
+
 .login-heading p {
     color: #000;
     font-weight: 600;
 }
-.login-and-all-form .form-label{font-weight: 600;}
-.login-and-all-form input{
+
+.login-and-all-form .form-label {
+    font-weight: 600;
+}
+
+.login-and-all-form input {
     border-radius: 0 !important;
     padding: 12px 15px;
     border: 1px solid #c5c5c5;
 }
-.login-form{border-radius: 20px; box-shadow: 5px ;}
+
+.login-form {
+    border-radius: 20px;
+    box-shadow: 5px;
+}
+
+/* main layout  */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.layout-content {
+    display: flex;
+    flex: 1;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.chat-window {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    /* Ensure messages stack vertically */
+}
+
+
+.my-message {
+    align-self: flex-end;
+    background-color: #8ef37a;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.other-message {
+    align-self: flex-start;
+    background-color: #e0d7f8;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.dropdown-menu[data-bs-popper] {
+    right: 0 !important;
+    left: auto !important;
+}
