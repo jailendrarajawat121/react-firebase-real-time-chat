@@ -81,7 +81,7 @@ const Login = () => {
                     width: "100%",
                 }}
             >
-                <h3 className="text-center mb-4">Log in to <br />Transfer Network Partner</h3>
+                <h3 className="text-center mb-4">Log in to <br />Real Time Chat</h3>
                 {error && <div className="alert alert-danger">{error}</div>}
                 <Form>
                     <Form.Group className="mb-3" controlId="formUsername">

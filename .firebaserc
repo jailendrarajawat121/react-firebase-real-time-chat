@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "trusted-network-dev"
-  }
+    "default": "react-firebase-real-time-chat",
+    "react-firebase-real-time-chat": "react-firebase-real-time-3acbe"
+  },
+  "targets": {},
+  "etags": {}
 }

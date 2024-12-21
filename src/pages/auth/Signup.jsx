@@ -125,7 +125,7 @@ const Signup = () => {
             >
                 <h3 className="text-center mb-4">
                     Sign up for <br />
-                    Transfer Network Partner
+                    Real Time Chat
                 </h3>
                 {error && <div className="alert alert-danger">{error}</div>}
                 {successMessage && <div className="alert alert-success">{successMessage}</div>}

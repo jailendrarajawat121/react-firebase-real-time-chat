@@ -24,7 +24,7 @@ const NavbarComponent = () => {
         <Navbar bg="light" expand="lg" className="px-3">
             <Navbar.Brand href="#">
                 <div className="d-flex align-items-center">
-                    <span className="ms-2">TRUSTED NETWORK PARTNER</span>
+                    <span className="ms-2">Real Time Chat</span>
                 </div>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

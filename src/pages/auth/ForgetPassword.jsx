@@ -13,7 +13,7 @@ function ForgetPassword() {
 
                         <div className="text-center mb-4">
                             <h2 className="text-primary">Welcome To</h2>
-                            <h3 className="text-black">TRUSTED NETWORK PARTNER</h3>
+                            <h3 className="text-black">Real Time Chat</h3>
                             <p>Forget Password</p>
                         </div>
 
